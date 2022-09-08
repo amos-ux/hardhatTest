@@ -8,6 +8,7 @@ contract Test {
         bool completed;
     }
     TodoList[] public todos;
+    address public ower=msg.sender;
 
     function create(string calldata _text) external {
         todos.push(TodoList({text: _text, completed: false}));

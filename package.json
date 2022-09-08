@@ -5,10 +5,13 @@
   "license": "MIT",
   "scripts": {
     "compile": "npx hardhat compile",
-    "test":"npx hardhat test --parallel",
-    "deploy:goerli":"npx hardhat run --network goerli scripts/deploy.js",
-    "deploy:local":"npx hardhat run --network localhost scripts/deploy.js",
-    "verify":"npx hardhat verify --network goerli"
+    "test":"npx hardhat test",
+    "deploy:goerli":"npx hardhat run --network goerli",
+    "deploy:ropsten":"npx hardhat run --network ropsten",
+    "deploy:local":"npx hardhat run --network localhost",
+    "verify":"npx hardhat verify --network goerli",
+    "verify:ropsten":"npx hardhat verify --network ropsten",
+    "clears":"npx hardhat clean"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",

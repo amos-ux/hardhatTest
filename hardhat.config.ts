@@ -13,6 +13,11 @@ const config: HardhatUserConfig = {
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
       chainId: 5,
     },
+    ropsten: {
+      url: `https://ropsten.infura.io/v3/${INFURA_ID}`,
+      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      chainId: 3,
+    },
     localhost: {
       url: "http://127.0.0.1:8545/",
       chainId: 31337,
