@@ -5,13 +5,13 @@
   "license": "MIT",
   "scripts": {
     "compile": "npx hardhat compile",
-    "test":"npx hardhat test",
-    "deploy:goerli":"npx hardhat run --network goerli",
-    "deploy:ropsten":"npx hardhat run --network ropsten",
-    "deploy:local":"npx hardhat run --network localhost",
-    "verify":"npx hardhat verify --network goerli",
-    "verify:ropsten":"npx hardhat verify --network ropsten",
-    "clears":"npx hardhat clean"
+    "test": "npx hardhat test",
+    "deploy:goerli": "npx hardhat run --network goerli",
+    "deploy:ropsten": "npx hardhat run --network ropsten",
+    "deploy:local": "npx hardhat run --network localhost",
+    "verify": "npx hardhat verify --network goerli",
+    "verify:ropsten": "npx hardhat verify --network ropsten",
+    "clears": "npx hardhat clean"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
@@ -36,6 +36,7 @@
     "typescript": ">=4.5.0"
   },
   "dependencies": {
-    "dotenv": "^16.0.2"
+    "dotenv": "^16.0.2",
+    "solc": "^0.8.17"
   }
 }

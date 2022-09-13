@@ -1,8 +1,12 @@
+// SPDX-License-Identifier: NONE
+pragma solidity ^0.8.9;
+
 contract Array {
     uint256[] public arr = [1, 2, 3, 4];
     uint256[4] public arrWidth = [1, 2, 3, 4];
     address public ower;
     uint256 public x;
+    uint256 public count=1;
 
     constructor(uint256 _x) {
         ower = msg.sender;
