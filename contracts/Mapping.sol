@@ -43,7 +43,7 @@ contract Mapping {
     }
   // get strcut
      function getStrcut(uint256 _index) external view returns (address) {
-        BalanceStruct storage Balance = BalanceList[_index];
+        BalanceStruct memory Balance = BalanceList[_index];
         return Balance.adr;
     }
 }

@@ -27,10 +27,12 @@ describe("mapping", function () {
       const { mapping } = await loadFixture(deployOneYearLockFixture);
       expect(await mapping.index()).to.be.equal(0);
       const set=await mapping.set("0x617F2E2fD72FD9D5503197092aC168c91465E7f2",1);
+      await set.wait();
+      expect(await mapping.interted("0x617F2E2fD72FD9D5503197092aC168c91465E7f2")).to.be.equal(true);
       expect(await mapping.index()).to.be.equal(1);
       const size= await mapping.getSize();
       const adr= await mapping.keys(Number(size)-1);
-      expect(await adr).to.be.equal("0x617F2E2fD72FD9D5503197092aC168c91465E7f2");
+      expect(adr).to.be.equal("0x617F2E2fD72FD9D5503197092aC168c91465E7f2");
     })
     it("get", async()=>{
       const { mapping } = await loadFixture(deployOneYearLockFixture);
@@ -39,7 +41,7 @@ describe("mapping", function () {
       expect(await mapping.index()).to.be.equal(1);
       const size= await mapping.getSize();
       const value=await mapping.get(Number(size)-1);
-      expect(await value).to.be.equal(1);
+      expect(value).to.be.equal(1);
     })
     it("getSize", async()=>{
       const { mapping } = await loadFixture(deployOneYearLockFixture);
@@ -47,7 +49,7 @@ describe("mapping", function () {
       await mapping.set("0x617F2E2fD72FD9D5503197092aC168c91465E7f2",1);
       expect(await mapping.index()).to.be.equal(1);
       const size= await mapping.getSize();
-      expect(await size).to.be.equal(1);
+      expect(size).to.be.equal(1);
     })
     it("updateStruct", async()=>{
       const { mapping } = await loadFixture(deployOneYearLockFixture);
@@ -56,7 +58,7 @@ describe("mapping", function () {
       expect(await mapping.index()).to.be.equal(1);
       await mapping.updateStruct(0,"0x617F2E2fD72FD9D5503197092aC168c91465E7f2")
 
-      expect(await (await mapping.BalanceList(0)).adr).to.be.equal("0x617F2E2fD72FD9D5503197092aC168c91465E7f2");
+      expect((await mapping.BalanceList(0)).adr).to.be.equal("0x617F2E2fD72FD9D5503197092aC168c91465E7f2");
     })
     it("updateStruct", async()=>{
       const { mapping } = await loadFixture(deployOneYearLockFixture);
@@ -64,7 +66,7 @@ describe("mapping", function () {
       await mapping.set("0x617F2E2fD72FD9D5503197092aC168c91465E7f2",1);
       expect(await mapping.index()).to.be.equal(1);
       const getStrcut =await mapping.getStrcut(0)
-      expect(await getStrcut).to.be.equal("0x617F2E2fD72FD9D5503197092aC168c91465E7f2");
+      expect(getStrcut).to.be.equal("0x617F2E2fD72FD9D5503197092aC168c91465E7f2");
     })
   });
 });
