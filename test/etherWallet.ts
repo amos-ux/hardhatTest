@@ -17,7 +17,7 @@ describe("etherWallet", function () {
     const [owner, otherAccount] = await ethers.getSigners();
 
     const EtherWallet = await ethers.getContractFactory("EtherWallet");
-    const amount = await ethers.utils.parseUnits("10000", "wei");
+    const amount = await ethers.utils.parseUnits("10","ether");
     const etherWallet = await EtherWallet.deploy({ value: amount } as any);
     await etherWallet.deployed();
     return { etherWallet, owner, otherAccount };
@@ -25,14 +25,23 @@ describe("etherWallet", function () {
   describe("Functions", function () {
     it("withdraw", async function () {
       const { etherWallet } = await loadFixture(deployOneYearLockFixture);
-      const amount = await ethers.utils.parseUnits("1000", "wei");
+      const amount = await ethers.utils.parseUnits("2","ether");
       const format = async (value: BigNumber) => {
         return await ethers.utils.formatEther(value);
       };
-      const withdraw = await etherWallet.withdraw(await format(amount));
+      const withdraw = await etherWallet.withdraw(+await format(amount));
       await withdraw.wait()
-      expect(1).to.be.equal(1);
-      // expect(await etherWallet.getBalance()).to.be.equal(await format(await ethers.utils.parseUnits("9000", "wei")));
+      console.log(+await format(await ethers.utils.parseUnits("8", "ether")));
+      console.log(+await etherWallet.getBalance())
+      expect(1).to.be.equal(1)
+      expect(+await format(await etherWallet.getBalance())).to.be.equal(10);
+    });
+    it("getBalance", async function () {
+      const { etherWallet } = await loadFixture(deployOneYearLockFixture);
+      const format = async (value: BigNumber) => {
+        return await ethers.utils.formatEther(value);
+      };
+      expect(+await format(await etherWallet.getBalance())).to.be.equal(10);
     });
   });
 });
